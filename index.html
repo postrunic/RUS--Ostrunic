@@ -171,6 +171,17 @@ Testiranje logičkim analizatorom</h1>
 <li><b>D3 (SENSOR)</b> — pin D27, signal žute LED (senzor)</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md7"></a>
+Ispitivanje logičkim analizatorom</h1>
+<p><img src="docs/logic_analyzer.png" alt="Logički analizator" class="inline"/></p>
+<p><b>Opis ispitivanja:</b> <br  />
+ Na snimci se jasno vide 4 kanala:</p><ul>
+<li><b>ALARM</b> — aktivira se pritiskom crvenog tipkala (visoki prioritet)</li>
+<li><b>RESET</b> — aktivira se pritiskom zelenog tipkala (srednji prioritet), vidljivo nakon što ALARM signal pada</li>
+<li><b>TIMER</b> — periodički signal timera (najviši prioritet)</li>
+<li><b>SENSOR</b> — ostaje neaktivan dok je alarm aktivan (niski prioritet)</li>
+</ul>
+<p>Snimka potvrđuje ispravnu prioritizaciju — RESET se obrađuje tek nakon što ALARM završi s obradom.</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Doxygen dokumentacija</h1>
 <p>HTML dokumentacija se automatski generira putem GitHub Actions i dostupna je na GitHub Pages. </p>
 </div></div><!-- PageDoc -->

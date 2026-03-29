@@ -6,5 +6,6 @@ var index =
     [ "Upravljanje resursima", "index.html#autotoc_md4", null ],
     [ "Control Flow Graph", "index.html#autotoc_md5", null ],
     [ "Testiranje logičkim analizatorom", "index.html#autotoc_md6", null ],
-    [ "Doxygen dokumentacija", "index.html#autotoc_md7", null ]
+    [ "Ispitivanje logičkim analizatorom", "index.html#autotoc_md7", null ],
+    [ "Doxygen dokumentacija", "index.html#autotoc_md8", null ]
 ];
