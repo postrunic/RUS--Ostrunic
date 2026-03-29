@@ -69,5 +69,20 @@ Logički analizator prati 4 kanala:
 - **D2 (TIMER)** — pin D14, signal bijele LED (timer)
 - **D3 (SENSOR)** — pin D27, signal žute LED (senzor)
 
+## Ispitivanje logičkim analizatorom
+
+![Logički analizator](docs/logic_analyzer.png)
+
+**Opis ispitivanja:**  
+Na snimci se jasno vide 4 kanala:
+- **ALARM** — aktivira se pritiskom crvenog tipkala (visoki prioritet)
+- **RESET** — aktivira se pritiskom zelenog tipkala (srednji prioritet), 
+  vidljivo nakon što ALARM signal pada
+- **TIMER** — periodički signal timera (najviši prioritet)
+- **SENSOR** — ostaje neaktivan dok je alarm aktivan (niski prioritet)
+
+Snimka potvrđuje ispravnu prioritizaciju — RESET se obrađuje tek 
+nakon što ALARM završi s obradom.
+
 ## Doxygen dokumentacija
 HTML dokumentacija se automatski generira putem GitHub Actions i dostupna je na GitHub Pages.
