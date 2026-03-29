@@ -5,9 +5,9 @@ CREATE_SUBDIRS         = YES
 DOXYFILE_ENCODING      = UTF-8
 USE_MDFILE_AS_MAINPAGE = README.md
 
-INPUT                  = .
+INPUT                  = . README.md
 RECURSIVE              = YES
-FILE_PATTERNS          = *.c *.h *.cpp
+FILE_PATTERNS          = *.c *.h *.cpp *.md
 EXTENSION_MAPPING      = cpp=c
 
 GENERATE_HTML          = YES
