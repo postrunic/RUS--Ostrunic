@@ -3,7 +3,7 @@ name: Generiraj Doxygen dokumentaciju
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
