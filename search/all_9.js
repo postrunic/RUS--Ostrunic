@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['setup_0',['setup',['../df/d0a/main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'main.cpp']]]
+  ['main_2ecpp_0',['main.cpp',['../df/d0a/main_8cpp.html',1,'']]],
+  ['measuredistance_1',['measureDistance',['../df/d0a/main_8cpp.html#a24db61917b9da8bb4b87af136cbd345f',1,'main.cpp']]]
 ];

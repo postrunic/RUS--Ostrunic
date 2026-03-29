@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RUS_Lab1_Prekidi: Main Page</title>
+<title>RUS_Lab1_Prekidi: RUS Lab1 - Sustav za nadzor prostorije</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,10 +89,91 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">RUS_Lab1_Prekidi Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">RUS Lab1 - Sustav za nadzor prostorije </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Opis projekta</h1>
+<p>ESP32 sustav koji demonstrira rad s višestrukim prekidima i njihovim prioritetima. Simulacija se izvodi u Wokwi simulatoru unutar VS Code + PlatformIO okruženja.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Komponente</h1>
+<ul>
+<li>ESP32 DevKit V1</li>
+<li>2x tipkalo (alarm, reset)</li>
+<li>4x LED (crvena, zelena, žuta, bijela)</li>
+<li>HC-SR04 ultrazvučni senzor</li>
+<li>Logički analizator</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Prekidi i prioriteti</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Prioritet   </th><th class="markdownTableHeadNone">Izvor   </th><th class="markdownTableHeadNone">Pin   </th><th class="markdownTableHeadNone">Opis   </th><th class="markdownTableHeadNone">LED indikator    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 (najviši)   </td><td class="markdownTableBodyNone">Timer   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">Trepće svake 2 sekunde   </td><td class="markdownTableBodyNone">Bijela    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2 (visoki)   </td><td class="markdownTableBodyNone">Tipkalo 1   </td><td class="markdownTableBodyNone">D18   </td><td class="markdownTableBodyNone">Aktivira alarm   </td><td class="markdownTableBodyNone">Crvena    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">3 (srednji)   </td><td class="markdownTableBodyNone">Tipkalo 2   </td><td class="markdownTableBodyNone">D19   </td><td class="markdownTableBodyNone">Resetira alarm   </td><td class="markdownTableBodyNone">Zelena    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4 (niski)   </td><td class="markdownTableBodyNone">HC-SR04 senzor   </td><td class="markdownTableBodyNone">D32/D33   </td><td class="markdownTableBodyNone">Objekt bliže od 20cm   </td><td class="markdownTableBodyNone">Žuta   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Upravljanje resursima</h1>
+<ul>
+<li><b>Zastavice (flags)</b> — ISR funkcije ne obrađuju prekide direktno nego postavljaju <code>volatile bool</code> zastavice koje glavna petlja obrađuje prema prioritetu</li>
+<li><b>Debounce</b> — tipkala imaju 200ms debounce zaštitu od višestrukog okidanja</li>
+<li><b>Blokiranje nižih prioriteta</b> — dok je alarm aktivan, senzor se ne obrađuje</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Control Flow Graph</h1>
+<div class="fragment"><div class="line">flowchart TD</div>
+<div class="line">    A([Start]) --&gt; B[setup]</div>
+<div class="line">    B --&gt; C[Inicijalizacija pinova]</div>
+<div class="line">    C --&gt; D[Postavljanje ISR funkcija]</div>
+<div class="line">    D --&gt; E[Pokretanje Timera]</div>
+<div class="line">    E --&gt; F([loop])</div>
+<div class="line"> </div>
+<div class="line">    F --&gt; G{flagTimer?}</div>
+<div class="line">    G --&gt;|DA| H[handleTimer\nbijela LED trepne]</div>
+<div class="line">    H --&gt; G2{flagAlarm?}</div>
+<div class="line">    G --&gt;|NE| G2</div>
+<div class="line"> </div>
+<div class="line">    G2 --&gt;|DA| I[handleAlarm\ncrvena LED ON]</div>
+<div class="line">    I --&gt; G3{flagReset?}</div>
+<div class="line">    G2 --&gt;|NE| G3</div>
+<div class="line"> </div>
+<div class="line">    G3 --&gt;|DA| J[handleReset\nzelena LED trepne]</div>
+<div class="line">    J --&gt; G4{alarmActive?}</div>
+<div class="line">    G3 --&gt;|NE| G4</div>
+<div class="line"> </div>
+<div class="line">    G4 --&gt;|NE| K[handleSensor\nmjeri udaljenost]</div>
+<div class="line">    K --&gt; L{dist &lt; 20cm?}</div>
+<div class="line">    L --&gt;|DA| M[žuta LED ON]</div>
+<div class="line">    L --&gt;|NE| N[žuta LED OFF]</div>
+<div class="line">    M --&gt; F</div>
+<div class="line">    N --&gt; F</div>
+<div class="line">    G4 --&gt;|DA| F</div>
+<div class="line"> </div>
+<div class="line">    subgraph ISR rutine</div>
+<div class="line">        P[/Timer ISR/] --&gt;|flagTimer = true| F</div>
+<div class="line">        Q[/ISR_Alarm tipkalo D18/] --&gt;|flagAlarm = true| F</div>
+<div class="line">        R[/ISR_Reset tipkalo D19/] --&gt;|flagReset = true| F</div>
+<div class="line">    end</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+Testiranje logičkim analizatorom</h1>
+<p>Logički analizator prati 4 kanala:</p><ul>
+<li><b>D0 (ALARM)</b> — pin D18, signal tipkala za alarm</li>
+<li><b>D1 (RESET)</b> — pin D19, signal tipkala za reset</li>
+<li><b>D2 (TIMER)</b> — pin D14, signal bijele LED (timer)</li>
+<li><b>D3 (SENSOR)</b> — pin D27, signal žute LED (senzor)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Doxygen dokumentacija</h1>
+<p>HTML dokumentacija se automatski generira putem GitHub Actions i dostupna je na GitHub Pages. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

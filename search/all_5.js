@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['lastalarmtime_0',['lastAlarmTime',['../df/d0a/main_8cpp.html#aeb132064dca68fcde7e1b5fd0ec2a097',1,'main.cpp']]],
-  ['lastresettime_1',['lastResetTime',['../df/d0a/main_8cpp.html#a809222c43e0c0bca0685f67b297ea859',1,'main.cpp']]],
-  ['loop_2',['loop',['../df/d0a/main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]]
+  ['handlealarm_0',['handleAlarm',['../df/d0a/main_8cpp.html#a62a5aa3546b2ab35673e2fa20d619a97',1,'main.cpp']]],
+  ['handlereset_1',['handleReset',['../df/d0a/main_8cpp.html#a28576d900afa7ce8f3f4177cb38f61b9',1,'main.cpp']]],
+  ['handlesensor_2',['handleSensor',['../df/d0a/main_8cpp.html#acb194445a5549230fdafa974151adbb9',1,'main.cpp']]],
+  ['handletimer_3',['handleTimer',['../df/d0a/main_8cpp.html#a2bbe07ea6c4933d5dd79621e5e9bfda1',1,'main.cpp']]]
 ];
