@@ -1,0 +1,39 @@
+PROJECT_NAME           = "RUS_Lab1_Prekidi"
+PROJECT_BRIEF          = "Lab1: ESP32 sustav za nadzor prostorije s višestrukim prekidima"
+OUTPUT_DIRECTORY       = ./docs
+CREATE_SUBDIRS         = YES
+DOXYFILE_ENCODING      = UTF-8
+USE_MDFILE_AS_MAINPAGE = README.md
+
+INPUT                  = .
+RECURSIVE              = YES
+FILE_PATTERNS          = *.c *.h *.cpp
+EXTENSION_MAPPING      = cpp=c
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+GENERATE_RTF           = NO
+
+HTML_COLORSTYLE        = AUTO_LIGHT
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+SHOW_FILES             = YES
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+OPTIMIZE_OUTPUT_FOR_C  = YES
+
+HAVE_DOT               = NO
+
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_INCOMPLETE_DOC = YES
+
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+
+OUTPUT_LANGUAGE        = English
+TAB_SIZE               = 4
+QUIET                  = NO

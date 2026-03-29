@@ -1,0 +1,25 @@
+name: Generiraj Doxygen dokumentaciju
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout koda
+        uses: actions/checkout@v3
+
+      - name: Instaliraj Doxygen
+        run: sudo apt-get install -y doxygen
+
+      - name: Generiraj dokumentaciju
+        run: doxygen Doxyfile
+
+      - name: Objavi na GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
