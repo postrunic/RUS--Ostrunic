@@ -21,10 +21,12 @@ jobs:
         run: sudo apt-get install -y doxygen
 
       - name: Generiraj dokumentaciju
-        run: doxygen Doxyfile
+        run: |
+          cd Lab1
+          doxygen Doxyfile
 
       - name: Objavi na GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/html
+          publish_dir: ./Lab1/docs/html
