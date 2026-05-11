@@ -1,0 +1,56 @@
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1156
+load:0x40078000,len:11456
+ho 0 tail 12 room 4
+load:0x40080400,len:2972
+entry 0x400805dc
+
+=== RUS Lab2 - Pametni postanski sanducic ===
+[BOOT] Wokwi demonstracija pokrenuta.
+[BOOT] Tipkalo POSTA simulira ubacivanje poste.
+[SLEEP] Wokwi: simuliram ESP32 Deep Sleep stanje.
+[SLEEP] Sljedece budenje: pritisak tipkala POSTA na GPIO33.
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+
+[WAKE] Budenje vanjskim dogadajem na GPIO33.
+[DEBOUNCE] Dogadaj je prihvacen kao jedan logicki dogadaj.
+[OBRADA] Evidentiram dogadaj pametnog postanskog sanducica.
+[OBRADA] Ukupan broj prihvacenih dogadaja: 1
+[OBRADA] LED indikator treperi oko 3 sekunde.
+[OBRADA] Kratka obrada je zavrsena.
+[SLEEP] Wokwi: simuliram ESP32 Deep Sleep stanje.
+[SLEEP] Sljedece budenje: pritisak tipkala POSTA na GPIO33.
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+
+[WAKE] Budenje vanjskim dogadajem na GPIO33.
+[DEBOUNCE] Dogadaj je prihvacen kao jedan logicki dogadaj.
+[OBRADA] Evidentiram dogadaj pametnog postanskog sanducica.
+[OBRADA] Ukupan broj prihvacenih dogadaja: 2
+[OBRADA] LED indikator treperi oko 3 sekunde.
+[OBRADA] Kratka obrada je zavrsena.
+[SLEEP] Wokwi: simuliram ESP32 Deep Sleep stanje.
+[SLEEP] Sljedece budenje: pritisak tipkala POSTA na GPIO33.
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+
+[WAKE] Budenje vanjskim dogadajem na GPIO33.
+[DEBOUNCE] Dogadaj je prihvacen kao jedan logicki dogadaj.
+[OBRADA] Evidentiram dogadaj pametnog postanskog sanducica.
+[OBRADA] Ukupan broj prihvacenih dogadaja: 3
+[OBRADA] LED indikator treperi oko 3 sekunde.
+[OBRADA] Kratka obrada je zavrsena.
+[DEBOUNCE] Cekam otpustanje tipkala prije povratka u sleep.
+[DEBOUNCE] Tipkalo otpusteno, signal je stabilan.
+[SLEEP] Wokwi: simuliram ESP32 Deep Sleep stanje.
+[SLEEP] Sljedece budenje: pritisak tipkala POSTA na GPIO33.
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...
+[SLEEP] Cekam dogadaj na tipkalu POSTA...

@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Patrik Ostrunic",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 96, "left": 80, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_mail",
+      "top": -28,
+      "left": -80,
+      "rotate": 90,
+      "attrs": { "color": "blue", "label": "POSTA" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_pulldown",
+      "top": 224.2,
+      "left": -106.45,
+      "rotate": 270,
+      "attrs": { "value": "10k" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_active",
+      "top": -51.6,
+      "left": 320.6,
+      "attrs": { "color": "green", "label": "OBRADA" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led",
+      "top": 43.2,
+      "left": 316.25,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "btn_mail:1.l", "esp:D33", "blue", [ "v-35.7", "h67.9", "v244.9" ] ],
+    [ "btn_mail:2.l", "esp:3V3", "red", [ "v-45.3", "h298.1", "v331.3" ] ],
+    [ "r_pulldown:1", "esp:GND.1", "black", [ "v67.2", "h297.6", "v-81.4" ] ],
+    [ "r_pulldown:2", "esp:D33", "blue", [ "v-37.2", "h67.2", "v14.5" ] ],
+    [ "led_active:A", "r_led:1", "green", [] ],
+    [ "r_led:2", "esp:D25", "green", [] ],
+    [ "led_active:C", "esp:GND.2", "black", [ "h-269.4", "v251" ] ],
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ]
+  ],
+  "serialMonitor": { "collapse": false, "convertEol": false, "display": "always", "newline": "lf" },
+  "dependencies": {}
+}
